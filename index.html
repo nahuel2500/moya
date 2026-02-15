@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>moyaa 💖</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(-45deg, #ff758c, #ff7eb3, #fad0c4, #ffdde1);
+  background-size: 400% 400%;
+  animation: gradient 12s ease infinite;
+}
+
+@keyframes gradient {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+.container {
+  text-align: center;
+  color: white;
+  animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.9);}
+  to {opacity: 1; transform: scale(1);}
+}
+
+h1 {
+  font-size: 50px;
+}
+
+p {
+  font-size: 22px;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  margin: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#yes {
+  background-color: white;
+  color: hotpink;
+}
+
+#yes:hover {
+  transform: scale(1.1);
+  background-color: hotpink;
+  color: white;
+}
+
+#no {
+  background-color: #ff4d6d;
+  color: white;
+  position: relative;
+}
+
+.heart {
+  position: absolute;
+  color: white;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  from {transform: translateY(100vh);}
+  to {transform: translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Moya como te hice llorar con lo otro ahora la pregunta es... 💖</h1>
+  <p>¿Trio con una chica y con un chico?</p>
+  <button id="yes" onclick="love()">Sí 💘</button>
+  <button id="no" onmouseover="moveButton()">No 😢</button>
+</div>
+
+<script>
+function love() {
+  document.body.innerHTML = `
+  <div style="text-align:center; color:white;">
+    <h1>Sabía que dirías que sí 💕</h1>
+    <p>Te quiero muchísimo 💖</p>
+  </div>`;
+}
+
+function moveButton() {
+  const button = document.getElementById("no");
+  const x = Math.random() * 300 - 150;
+  const y = Math.random() * 300 - 150;
+  button.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 20 + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 6000);
+}
+
+setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
